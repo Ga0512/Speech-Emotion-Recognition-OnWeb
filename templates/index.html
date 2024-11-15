@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>State-of-the-art of <span class="highlight">Speech Emotion Recognition</span> with Machine Learning!</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="audio_file" accept="audio/*" required>
+            {% if audio_path %}
+                <audio controls>
+                    <source src="{{ audio_path }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <h3> {{ emotion }} </h3>
+            {% endif %}
+            <div class="buttons">
+                <button type="submit">Submit</button>
+                <a href="{{ url_for('clear') }}" class="clear-button">Clear</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
